@@ -1,0 +1,218 @@
+/* ================================================
+   HOTEL LAS VEGAS — Estilos del sistema
+   ================================================ */
+
+:root {
+  --hlv-primary:   #6366f1;
+  --hlv-primary-d: #4f46e5;
+  --hlv-sidebar-w: 220px;
+  --hlv-nav-h:     56px;
+}
+
+/* ---- NAVBAR ---- */
+.hlv-navbar {
+  background: #1e1b4b;
+  height: var(--hlv-nav-h);
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+}
+
+.avatar-circle {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--hlv-primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 600;
+}
+
+/* ---- SIDEBAR ---- */
+.hlv-sidebar {
+  width: var(--hlv-sidebar-w);
+  background: #f8faff;
+  border-right: 1px solid #e2e8f0;
+  position: sticky;
+  top: var(--hlv-nav-h);
+  height: calc(100vh - var(--hlv-nav-h));
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  font-size: .875rem;
+  color: #475569;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 1px 8px;
+  transition: background .15s, color .15s;
+}
+.sidebar-link:hover  { background: #eef2ff; color: var(--hlv-primary); }
+.sidebar-link.active { background: #eef2ff; color: var(--hlv-primary); font-weight: 500; }
+.sidebar-icon        { font-size: 1rem; width: 20px; text-align: center; }
+
+.sidebar-section {
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  padding: 14px 16px 4px;
+}
+
+.sidebar-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #e2e8f0;
+}
+
+/* ---- MAIN ---- */
+.hlv-main {
+  background: #f4f6fb;
+  min-height: calc(100vh - var(--hlv-nav-h));
+}
+
+/* ---- CARDS ---- */
+.hlv-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.hlv-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+/* ---- MÉTRICAS DASHBOARD ---- */
+.metric-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+.metric-label { font-size: .78rem; color: #64748b; margin-bottom: 4px; }
+.metric-value { font-size: 1.6rem; font-weight: 600; color: #1e293b; }
+.metric-sub   { font-size: .75rem; color: #94a3b8; margin-top: 2px; }
+
+/* ---- MAPA DE HABITACIONES ---- */
+.hab-card {
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s;
+  min-width: 90px;
+}
+.hab-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,.1); }
+.hab-card .hab-num  { font-size: 1.1rem; font-weight: 700; }
+.hab-card .hab-tipo { font-size: .7rem; margin-top: 2px; }
+.hab-card .hab-ico  { font-size: 1.5rem; margin-bottom: 4px; }
+
+.hab-disponible   { background: #f0fdf4; border-color: #4ade80; color: #166534; }
+.hab-ocupada      { background: #fef2f2; border-color: #f87171; color: #991b1b; }
+.hab-limpieza     { background: #eff6ff; border-color: #60a5fa; color: #1e40af; }
+.hab-mantenimiento{ background: #fffbeb; border-color: #fbbf24; color: #92400e; }
+.hab-bloqueada    { background: #f8fafc; border-color: #cbd5e1; color: #475569; }
+
+/* ---- BADGES ESTADO ---- */
+.badge-disponible    { background: #dcfce7; color: #166534; }
+.badge-ocupada       { background: #fee2e2; color: #991b1b; }
+.badge-confirmada    { background: #dbeafe; color: #1e40af; }
+.badge-checkin       { background: #d1fae5; color: #065f46; }
+.badge-checkout      { background: #f3e8ff; color: #6b21a8; }
+.badge-cancelada     { background: #f1f5f9; color: #475569; }
+.badge-pendiente     { background: #fef9c3; color: #854d0e; }
+
+.estado-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+/* ---- BOTONES ---- */
+.btn-hlv {
+  background: var(--hlv-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: .45rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+  transition: background .15s;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-hlv:hover  { background: var(--hlv-primary-d); color: #fff; }
+.btn-hlv-sm     { padding: .3rem .75rem; font-size: .8rem; }
+.btn-hlv-outline {
+  background: transparent;
+  color: var(--hlv-primary);
+  border: 1px solid var(--hlv-primary);
+  border-radius: 8px;
+  padding: .45rem 1rem;
+  font-size: .875rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background .15s;
+}
+.btn-hlv-outline:hover { background: #eef2ff; color: var(--hlv-primary); }
+
+/* ---- TABLA ---- */
+.hlv-table { font-size: .875rem; }
+.hlv-table thead th {
+  background: #f8faff;
+  color: #64748b;
+  font-weight: 500;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 14px;
+}
+.hlv-table tbody td { padding: 10px 14px; vertical-align: middle; border-color: #f1f5f9; }
+.hlv-table tbody tr:hover { background: #f8faff; }
+
+/* ---- FORMULARIOS ---- */
+.hlv-form-label { font-size: .825rem; font-weight: 500; color: #374151; margin-bottom: 4px; }
+.hlv-input {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: .5rem .85rem;
+  font-size: .875rem;
+  width: 100%;
+  transition: border-color .15s;
+}
+.hlv-input:focus { border-color: var(--hlv-primary); outline: none; box-shadow: 0 0 0 3px rgba(99,102,241,.12); }
+
+/* ---- PAGE HEADER ---- */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.page-title   { font-size: 1.2rem; font-weight: 600; color: #1e293b; margin: 0; }
+.page-subtitle{ font-size: .8rem; color: #64748b; margin: 0; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 992px) {
+  .hlv-sidebar { display: none !important; }
+  .hlv-main    { padding: 1rem; }
+}
