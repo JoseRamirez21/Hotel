@@ -1,0 +1,329 @@
+/*==========================================
+    HOTEL LAS VEGAS - ADMIN PANEL
+==========================================*/
+
+/*====================
+    RESET
+=====================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#0B3D91;
+    --primary-dark:#082d69;
+    --secondary:#1E5AA8;
+
+    --white:#ffffff;
+    --light:#f5f7fa;
+    --gray:#6c757d;
+    --border:#e5e7eb;
+
+    --shadow:0 10px 25px rgba(0,0,0,.08);
+
+    --radius:12px;
+
+}
+
+/*====================
+    BODY
+=====================*/
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--light);
+
+    color:#333;
+
+}
+
+/*====================
+    NAVBAR
+=====================*/
+
+.topbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    height:70px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 25px;
+
+    box-shadow:var(--shadow);
+
+    z-index:1000;
+
+}
+
+.topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.topbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.logo{
+
+    width:42px;
+
+    height:42px;
+
+    object-fit:contain;
+
+}
+
+.hotel-name{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.menu-btn,
+.icon-btn{
+
+    border:none;
+
+    background:none;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+}
+
+/*====================
+    SIDEBAR
+=====================*/
+
+.sidebar{
+
+    position:fixed;
+
+    top:70px;
+
+    left:0;
+
+    width:260px;
+
+    height:calc(100vh - 70px);
+
+    background:var(--primary);
+
+    color:white;
+
+    overflow-y:auto;
+
+}
+
+.sidebar-header{
+
+    text-align:center;
+
+    padding:25px 15px;
+
+    border-bottom:1px solid rgba(255,255,255,.10);
+
+}
+
+.sidebar-logo{
+
+    width:70px;
+
+    margin-bottom:10px;
+
+}
+
+.sidebar-header h5{
+
+    margin-bottom:5px;
+
+}
+
+.sidebar-header small{
+
+    opacity:.7;
+
+}
+
+.sidebar-menu{
+
+    list-style:none;
+
+    padding:15px;
+
+}
+
+.sidebar-menu li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.sidebar-menu li:hover{
+
+    background:rgba(255,255,255,.12);
+
+}
+
+.sidebar-menu .active{
+
+    background:var(--secondary);
+
+}
+
+.sidebar-menu i{
+
+    font-size:20px;
+
+}
+
+/*====================
+    CONTENIDO
+=====================*/
+
+#app-content{
+
+    margin-left:260px;
+
+    margin-top:70px;
+
+    padding:30px;
+
+}
+
+/*====================
+    DASHBOARD
+=====================*/
+
+.page-header{
+
+    margin-bottom:30px;
+
+}
+
+.page-header h2{
+
+    color:var(--primary);
+
+    font-size:30px;
+
+}
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+.card-dashboard{
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:.25s;
+
+}
+
+.card-dashboard:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card-dashboard h3{
+
+    color:var(--primary);
+
+    font-size:34px;
+
+    margin-bottom:10px;
+
+}
+
+.panel{
+
+    background:white;
+
+    margin-top:30px;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:25px;
+
+}
+
+/*====================
+    FOOTER
+=====================*/
+
+.footer{
+
+    margin-left:260px;
+
+    padding:18px;
+
+    text-align:center;
+
+    color:#777;
+
+}
