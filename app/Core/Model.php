@@ -2,9 +2,11 @@
 
 namespace App\Core;
 
+use PDO;
+
 abstract class Model
 {
-    protected $db;
+    protected PDO $db;
 
     public function __construct()
     {

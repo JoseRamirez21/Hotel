@@ -6,29 +6,77 @@ class Router
 {
     private array $routes = [];
 
-    public function get($uri, $action)
+    public function get(string $uri, $action): void
     {
-        $this->routes['GET'][$uri] = $action;
+        $this->routes['GET'][$this->normalize($uri)] = $action;
     }
 
-    public function post($uri, $action)
+    public function post(string $uri, $action): void
     {
-        $this->routes['POST'][$uri] = $action;
+        $this->routes['POST'][$this->normalize($uri)] = $action;
     }
 
-    public function dispatch($uri, $method)
+    public function dispatch(string $uri, string $method): void
     {
+        $uri = $this->normalize($uri);
+
         if (!isset($this->routes[$method][$uri])) {
-            require_once dirname(__DIR__) . '/Views/errors/404.php';
+            http_response_code(404);
+            require dirname(__DIR__) . '/Views/errors/404.php';
             exit;
         }
 
-        [$controller, $function] = explode('@', $this->routes[$method][$uri]);
+        $action = $this->routes[$method][$uri];
 
-        $controller = "App\\Controllers\\{$controller}";
+        // Formato moderno:
+        // [Controlador::class, 'metodo']
+        if (is_array($action)) {
 
-        $controller = new $controller();
+            [$controller, $function] = $action;
 
-        call_user_func([$controller, $function]);
+            if (!class_exists($controller)) {
+                die("Controlador no encontrado: {$controller}");
+            }
+
+            $controller = new $controller();
+
+            if (!method_exists($controller, $function)) {
+                die("Método no encontrado: {$function}");
+            }
+
+            call_user_func([$controller, $function]);
+            return;
+        }
+
+        // Formato antiguo:
+        // 'DashboardController@index'
+        if (is_string($action)) {
+
+            [$controller, $function] = explode('@', $action);
+
+            $controller = "App\\Controllers\\{$controller}";
+
+            if (!class_exists($controller)) {
+                die("Controlador no encontrado: {$controller}");
+            }
+
+            $controller = new $controller();
+
+            if (!method_exists($controller, $function)) {
+                die("Método no encontrado: {$function}");
+            }
+
+            call_user_func([$controller, $function]);
+            return;
+        }
+
+        die('Ruta inválida.');
+    }
+
+    private function normalize(string $uri): string
+    {
+        $uri = '/' . trim($uri, '/');
+
+        return $uri === '//' ? '/' : $uri;
     }
 }
